@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Williams Joshua | Visual Artist</title>
+
+  <meta name="description"
+        content="Portfolio of Williams Joshua — Nigerian visual artist specializing in pencil drawing, oil painting, murals and custom artwork.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAVIGATION */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 20px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,11,11,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav a {
+      color: #ccc;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      padding: 160px 7% 80px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 80% 30%, #292929 0%, #0b0b0b 40%);
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .small-title {
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 10vw, 130px);
+      line-height: 0.9;
+      letter-spacing: -5px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+      color: #888;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 19px;
+      color: #bbb;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 25px;
+      border: 1px solid #555;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn.primary {
+      background: white;
+      color: black;
+      border-color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 100px 7%;
+    }
+
+    .section-title {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: #999;
+      max-width: 650px;
+      margin-bottom: 50px;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .art-card {
+      background: #151515;
+      overflow: hidden;
+      border: 1px solid #222;
+      transition: 0.4s;
+    }
+
+    .art-card:hover {
+      transform: translateY(-8px);
+      border-color: #555;
+    }
+
+    .art-image {
+      height: 420px;
+      background: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 14px;
+      overflow: hidden;
+    }
+
+    .art-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .art-info {
+      padding: 20px;
+    }
+
+    .art-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .art-info p {
+      color: #888;
+      font-size: 14px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: #aaa;
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    .about-box {
+      border: 1px solid #333;
+      padding: 45px;
+      background: #111;
+    }
+
+    .about-box h3 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid #444;
+      padding: 8px 13px;
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    /* SERVICES */
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      border: 1px solid #292929;
+      padding: 35px;
+      background: #111;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      border-color: #666;
+      transform: translateY(-5px);
+    }
+
+    .service-number {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .service h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      color: #888;
+    }
+
+    /* COMMISSION */
+
+    .commission {
+      text-align: center;
+      background: #f4f4f4;
+      color: #111;
+    }
+
+    .commission h2 {
+      font-size: clamp(40px, 7vw, 80px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .commission p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: #555;
+    }
+
+    .commission .btn {
+      background: #111;
+      color: white;
+      border-color: #111;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 35px;
+    }
+
+    .contact-link {
+      border: 1px solid #333;
+      padding: 13px 22px;
+      color: #ccc;
+      transition: 0.3s;
+    }
+
+    .contact-link:hover {
+      background: white;
+      color: black;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 30px 7%;
+      display: flex;
+      justify-content: space-between;
+      color: #666;
+      font-size: 13px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      nav {
+        padding: 17px 5%;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      section {
+        padding: 75px 5%;
+      }
+
+      .hero {
+        padding: 140px 5% 70px;
+      }
+
+      .hero h1 {
+        font-size: 65px;
+        letter-spacing: -3px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .art-image {
+        height: 400px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+  <div class="logo">WJ.</div>
+
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+  <div class="hero-content">
+
+    <div class="small-title">
+      Nigerian Visual Artist
+    </div>
+
+    <h1>
+      WILLIAMS<br>
+      <span>JOSHUA.</span>
+    </h1>
+
+    <p>
+      I create artwork that turns ideas, emotions and stories
+      into something you can see, feel and remember.
+    </p>
+
+    <div class="buttons">
+      <a href="#work" class="btn primary">
+        View My Work
+      </a>
+
+      <a href="#contact" class="btn">
+        Commission Me
+      </a>
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- ARTWORK -->
+
+<section id="work">
+
+  <div class="small-title">
+    Selected Works
+  </div>
+
+  <h2 class="section-title">
+    My Artwork
+  </h2>
+
+  <p class="section-description">
+    A selection of my work across pencil drawing,
+    painting, murals and experimental art.
+  </p>
+
+
+  <div class="gallery">
+
+    <!-- ARTWORK 1 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art1.jpg" alt="Pencil artwork by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>Portrait Study</h3>
+        <p>Pencil on paper</p>
+      </div>
+
+    </div>
+
+
+    <!-- ARTWORK 2 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art2.jpg" alt="Artwork by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>Untitled II</h3>
+        <p>Graphite / Mixed Media</p>
+      </div>
+
+    </div>
+
+
+    <!-- ARTWORK 3 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art3.jpg" alt="Painting by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>Expression</h3>
+        <p>Oil on canvas</p>
+      </div>
+
+    </div>
+
+
+    <!-- ARTWORK 4 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art4.jpg" alt="Artwork by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>Memory</h3>
+        <p>Pencil on paper</p>
+      </div>
+
+    </div>
+
+
+    <!-- ARTWORK 5 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art5.jpg" alt="Artwork by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>Untitled V</h3>
+        <p>Mixed Media</p>
+      </div>
+
+    </div>
+
+
+    <!-- ARTWORK 6 -->
+
+    <div class="art-card">
+
+      <div class="art-image">
+        <img src="images/art6.jpg" alt="Artwork by Williams Joshua">
+      </div>
+
+      <div class="art-info">
+        <h3>New Perspective</h3>
+        <p>Experimental Artwork</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="about">
+
+    <div class="about-text">
+
+      <div class="small-title">
+        About The Artist
+      </div>
+
+      <h2 class="section-title">
+        Art meets<br>imagination.
+      </h2>
+
+      <p>
+        I'm Williams Joshua, a Nigerian visual artist passionate
+        about transforming ideas, emotions and everyday experiences
+        into visual art.
+      </p>
+
+      <p>
+        My work focuses on pencil drawing, oil painting, murals
+        and custom artwork. I'm also interested in the relationship
+        between art, technology and innovation.
+      </p>
+
+      <p>
+        My goal is to create work that doesn't simply decorate
+        a space, but gives people something to stop and think about.
+      </p>
+
+    </div>
+
+
+    <div class="about-box">
+
+      <h3>What I Work With</h3>
+
+      <div class="skills">
+
+        <div class="skill">Pencil</div>
+        <div class="skill">Graphite</div>
+        <div class="skill">Oil Paint</div>
+        <div class="skill">Murals</div>
+        <div class="skill">Portraits</div>
+        <div class="skill">Mixed Media</div>
+        <div class="skill">Creative Design</div>
+        <div class="skill">Technology</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="small-title">
+    Services
+  </div>
+
+  <h2 class="section-title">
+    What I Create
+  </h2>
+
+  <p class="section-description">
+    Looking for something personal, meaningful or completely unique?
+    I create custom artwork for individuals, businesses and spaces.
+  </p>
+
+
+  <div class="services">
+
+    <div class="service">
+
+      <div class="service-number">01</div>
+
+      <h3>Portraits</h3>
+
+      <p>
+        Custom pencil and artistic portraits created
+        from your favourite photographs.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">02</div>
+
+      <h3>Oil Paintings</h3>
+
+      <p>
+        Original paintings created for personal collections,
+        homes, offices and special gifts.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">03</div>
+
+      <h3>Murals</h3>
+
+      <p>
+        Large-scale artwork designed to transform
+        walls and spaces.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">04</div>
+
+      <h3>Custom Art</h3>
+
+      <p>
+        Have an idea? Let's turn your concept into
+        an original piece of artwork.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">05</div>
+
+      <h3>Art Gifts</h3>
+
+      <p>
+        Meaningful personalised artwork for birthdays,
+        anniversaries and special occasions.
+      </p>
+
+    </div>
+
+
+    <div class="service">
+
+      <div class="service-number">06</div>
+
+      <h3>Collaborations</h3>
+
+      <p>
+        Open to creative collaborations with brands,
+        creators and other artists.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- COMMISSION -->
+
+<section class="commission">
+
+  <h2>
+    Have an idea?
+  </h2>
+
+  <p>
+    Tell me what you have in mind and let's turn
+    the idea into something you can keep forever.
+  </p>
+
+  <a
+    href="https://wa.me/2340000000000"
+    class="btn">
+    Start a Commission
+  </a>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+  <div class="small-title">
+    Get In Touch
+  </div>
+
+  <h2 class="section-title">
+    Let's Create Something.
+  </h2>
+
+  <p class="section-description" style="margin-left:auto;margin-right:auto;">
+    For commissions, collaborations, exhibitions or enquiries,
+    reach out through any of the platforms below.
+  </p>
+
+
+  <div class="contact-links">
+
+    <a
+      href="https://instagram.com/YOUR_INSTAGRAM"
+      class="contact-link">
+      Instagram
+    </a>
+
+    <a
+      href="https://www.tiktok.com/@YOUR_TIKTOK"
+      class="contact-link">
+      TikTok
+    </a>
+
+    <a
+      href="mailto:YOUR_EMAIL@example.com"
+      class="contact-link">
+      Email
+    </a>
+
+    <a
+      href="https://wa.me/2340000000000"
+      class="contact-link">
+      WhatsApp
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div>
+    © 2026 Williams Joshua
+  </div>
+
+  <div>
+    Visual Artist • Nigeria
+  </div>
+
+</footer>
+
+
+</body>
+</html>
