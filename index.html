@@ -1,1595 +1,1266 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta
-    name="description"
-    content="Williams Art — contemporary pencil drawings, oil paintings, murals and visual storytelling."
-  >
+    <title>Williams Art | Contemporary Artist</title>
 
-  <meta
-    name="keywords"
-    content="Williams Art, Nigerian artist, pencil artist, oil painter, mural artist, portrait artist"
-  >
+    <meta name="description"
+        content="Williams Art — contemporary pencil, oil, mural and mixed-media artwork.">
 
-  <meta name="author" content="Williams Joshua">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <meta name="theme-color" content="#090909">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
 
-  <title>Williams Art | Artist Portfolio</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-  <!-- =====================================================
-       PAGE LOADER
-       ===================================================== -->
+<!-- ================= PRELOADER ================= -->
 
-  <div class="page-loader" id="pageLoader">
+<div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+        <div class="loader-logo">W</div>
+        <div class="loader-name">WILLIAMS ART</div>
+        <div class="loader-line">
+            <span></span>
+        </div>
+        <p>CREATING • OBSERVING • EXPRESSING</p>
+    </div>
+</div>
 
-    <div class="loader-inner">
 
-      <div class="loader-logo">
-        WJ
-      </div>
+<!-- ================= SCROLL PROGRESS ================= -->
 
-      <p>
-        WILLIAMS ART
-      </p>
+<div class="scroll-progress">
+    <span id="scrollProgress"></span>
+</div>
 
-      <div class="loader-line">
+
+<!-- ================= BACKGROUND ================= -->
+
+<div class="background-effects">
+    <div class="gradient-orb orb-one"></div>
+    <div class="gradient-orb orb-two"></div>
+    <div class="gradient-orb orb-three"></div>
+
+    <div class="particles">
         <span></span>
-      </div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+
+<!-- ================= CURSOR ================= -->
+
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="site-header" id="siteHeader">
+
+    <div class="container header-container">
+
+        <a href="#home" class="brand">
+            <span class="brand-symbol">W</span>
+
+            <span class="brand-text">
+                <strong>WILLIAMS</strong>
+                <small>ART</small>
+            </span>
+        </a>
+
+
+        <nav class="main-navigation" id="mainNavigation">
+
+            <a href="#home" class="nav-link active">Home</a>
+
+            <a href="#work" class="nav-link">Work</a>
+
+            <a href="#about" class="nav-link">About</a>
+
+            <a href="#services" class="nav-link">Services</a>
+
+            <a href="#contact" class="nav-link">Contact</a>
+
+        </nav>
+
+
+        <a href="#contact" class="header-button">
+            Let's Create
+            <span>↗</span>
+        </a>
+
+
+        <button class="menu-toggle" id="menuToggle">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
 
     </div>
 
-  </div>
+</header>
 
 
-  <!-- =====================================================
-       CURSOR EFFECT
-       ===================================================== -->
 
-  <div
-    class="cursor-glow"
-    id="cursorGlow"
-    aria-hidden="true">
-  </div>
+<!-- ================= HERO ================= -->
 
+<main>
 
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
+<section class="hero section" id="home">
 
-  <header
-    class="site-header"
-    id="siteHeader"
-  >
-
-    <div class="header-container">
-
-
-      <!-- BRAND -->
-
-      <a
-        href="#home"
-        class="brand"
-        aria-label="Williams Art Home"
-      >
-
-        <span class="brand-mark">
-          WJ
-        </span>
-
-        <span class="brand-name">
-          WILLIAMS ART
-        </span>
-
-      </a>
-
-
-      <!-- DESKTOP NAVIGATION -->
-
-      <nav
-        class="main-navigation"
-        id="mainNavigation"
-        aria-label="Main navigation"
-      >
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#work">
-          Work
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#services">
-          Services
-        </a>
-
-        <a href="#commission">
-          Commission
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-      </nav>
-
-
-      <!-- HEADER BUTTON -->
-
-      <a
-        href="#contact"
-        class="header-contact"
-      >
-
-        <span>
-          Let's talk
-        </span>
-
-        <strong>
-          ↗
-        </strong>
-
-      </a>
-
-
-      <!-- MOBILE MENU BUTTON -->
-
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        type="button"
-        aria-label="Open navigation"
-        aria-expanded="false"
-      >
-
-        <span></span>
-        <span></span>
-        <span></span>
-
-      </button>
-
-    </div>
-
-  </header>
-
-
-  <!-- =====================================================
-       MAIN
-       ===================================================== -->
-
-  <main>
-
-
-    <!-- ===================================================
-         HERO
-         =================================================== -->
-
-    <section
-      class="hero section"
-      id="home"
-    >
-
-      <div class="hero-container">
-
-
-        <!-- HERO TEXT -->
+    <div class="hero-grid">
 
         <div class="hero-content reveal">
 
-          <div class="eyebrow">
-            <span class="eyebrow-line"></span>
-            Artist • Creator • Visual Storyteller
-          </div>
+            <div class="hero-eyebrow">
+                <span></span>
+                CONTEMPORARY ARTIST
+            </div>
 
 
-          <h1>
-            Art that
-            <br>
-            makes
-            <br>
-            <em>you feel.</em>
-          </h1>
+            <h1>
+
+                I turn
+                <span class="outline-text">ideas</span>
+
+                into
+
+                <span class="gold-text">art.</span>
+
+            </h1>
 
 
-          <p class="hero-description">
+            <p class="hero-description">
 
-            I create expressive artwork through pencil,
-            oil, murals and mixed media — turning ordinary
-            moments and ideas into pieces worth remembering.
+                Pencil drawings, oil paintings, murals and visual stories
+                created to make people stop, look and feel something.
 
-          </p>
-
-
-          <div class="hero-buttons">
-
-            <a
-              href="#work"
-              class="button button-light"
-            >
-
-              <span>
-                Explore my work
-              </span>
-
-              <strong>
-                ↗
-              </strong>
-
-            </a>
+            </p>
 
 
-            <a
-              href="#about"
-              class="simple-link"
-            >
+            <div class="hero-buttons">
 
-              Meet the artist
+                <a href="#work" class="button button-primary">
 
-              <span>
-                ↓
-              </span>
+                    Explore My Work
 
-            </a>
+                    <span>↗</span>
 
-          </div>
-
-        </div>
+                </a>
 
 
-        <!-- HERO ART -->
+                <a href="#about" class="button button-outline">
 
-        <div class="hero-art reveal">
+                    About Me
 
-          <div class="hero-image-wrapper">
+                </a>
 
-            <img
-              src="images/art1.jpg"
-              alt="Featured artwork by Williams Art"
-              class="hero-image"
-            >
-
-
-            <div class="hero-number">
-              01
             </div>
 
 
             <div class="hero-signature">
-              WJ
-            </div>
 
-          </div>
+                <span>W</span>
 
-
-          <div class="hero-caption">
-
-            <div>
-
-              <span>
-                FEATURED WORK
-              </span>
-
-              <strong>
-                Portrait Study
-              </strong>
+                <div>
+                    <strong>Williams Joshua</strong>
+                    <small>Artist & Visual Storyteller</small>
+                </div>
 
             </div>
-
-
-            <div>
-
-              <span>
-                MEDIUM
-              </span>
-
-              <strong>
-                Graphite
-              </strong>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- HERO BOTTOM -->
-
-      <div class="hero-scroll">
-
-        <span>
-          SCROLL TO EXPLORE
-        </span>
-
-        <div class="scroll-line">
-          <span></span>
-        </div>
-
-        <span>
-          01 — 06
-        </span>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         INTRODUCTION
-         =================================================== -->
-
-    <section
-      class="statement section"
-      id="statement"
-    >
-
-      <div class="statement-number">
-        01
-      </div>
-
-
-      <div class="statement-content reveal">
-
-        <div class="eyebrow">
-          The idea
-        </div>
-
-
-        <h2>
-          I don't just draw
-          <br>
-          what I see.
-          <br>
-          <em>I translate what I feel.</em>
-        </h2>
-
-
-        <p>
-
-          Every piece begins with observation,
-          but ends somewhere more personal.
-
-          My work explores people, memory,
-          identity, movement and the small details
-          that make a moment unforgettable.
-
-        </p>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         WORK SECTION
-         =================================================== -->
-
-    <section
-      class="work section"
-      id="work"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            Selected work
-          </div>
-
-          <h2>
-            My <em>artwork</em>
-          </h2>
 
         </div>
 
 
-        <p>
 
-          A collection of drawings,
-          paintings, murals and visual experiments.
+        <div class="hero-art reveal">
 
-        </p>
+            <div class="hero-frame">
 
-      </div>
+                <div class="frame-decoration top-left"></div>
+                <div class="frame-decoration bottom-right"></div>
 
+                <div class="hero-image-wrapper">
 
-      <!-- ART FILTER -->
+                    <img
+                        src="images/art1.jpg"
+                        alt="Williams Art artwork"
+                        class="hero-image"
+                    >
 
-      <div
-        class="filter-bar"
-        role="tablist"
-        aria-label="Artwork categories"
-      >
+                    <div class="hero-image-overlay"></div>
 
-        <button
-          class="filter active"
-          data-filter="all"
-          type="button"
-        >
-          All
-        </button>
+                    <div class="hero-image-number">
+                        01
+                    </div>
 
-
-        <button
-          class="filter"
-          data-filter="pencil"
-          type="button"
-        >
-          Pencil
-        </button>
-
-
-        <button
-          class="filter"
-          data-filter="oil"
-          type="button"
-        >
-          Oil
-        </button>
-
-
-        <button
-          class="filter"
-          data-filter="mixed"
-          type="button"
-        >
-          Mixed Media
-        </button>
-
-
-        <button
-          class="filter"
-          data-filter="mural"
-          type="button"
-        >
-          Murals
-        </button>
-
-      </div>
-
-
-
-      <!-- ART GALLERY -->
-
-      <div
-        class="gallery"
-        id="gallery"
-      >
-
-
-        <!-- ART 01 -->
-
-        <article
-          class="art-card art-tall reveal"
-          data-category="pencil"
-        >
-
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art1.jpg"
-            data-title="Portrait Study"
-            data-medium="Graphite on paper"
-          >
-
-            <img
-              src="images/art1.jpg"
-              alt="Portrait Study"
-              loading="lazy"
-            >
-
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
-
-              <strong>
-                ↗
-              </strong>
-            </span>
-
-          </button>
-
-
-          <div class="art-information">
-
-            <span class="art-number">
-              01
-            </span>
-
-            <div>
-
-              <h3>
-                Portrait Study
-              </h3>
-
-              <p>
-                Graphite / Pencil
-              </p>
+                </div>
 
             </div>
 
-          </div>
 
-        </article>
+            <div class="hero-floating-card">
+
+                <span>AVAILABLE</span>
+
+                <strong>FOR COMMISSIONS</strong>
+
+                <div class="status-dot"></div>
+
+            </div>
+
+
+            <div class="hero-caption">
+
+                <span>01 / 06</span>
+
+                <span>Featured Artwork</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-bottom">
+
+        <div class="scroll-indicator">
+
+            <span>SCROLL TO EXPLORE</span>
+
+            <div class="scroll-line">
+                <span></span>
+            </div>
+
+        </div>
+
+
+        <div class="hero-social">
+
+            <span>FOLLOW</span>
+
+            <a href="#">IG</a>
+            <a href="#">TK</a>
+            <a href="#">YT</a>
+
+        </div>
+
+    </div>
+
+</section>
 
 
 
-        <!-- ART 02 -->
+<!-- ================= STATEMENT ================= -->
 
-        <article
-          class="art-card reveal"
-          data-category="mixed"
-        >
+<section class="statement section">
 
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art2.jpg"
-            data-title="Untitled II"
-            data-medium="Mixed Media"
-          >
+    <div class="container statement-grid">
 
-            <img
-              src="images/art2.jpg"
-              alt="Untitled II"
-              loading="lazy"
-            >
+        <div class="section-number">
+            01
+        </div>
 
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
 
-              <strong>
-                ↗
-              </strong>
+        <div class="statement-content reveal">
+
+            <span class="small-label">
+                MY PHILOSOPHY
             </span>
 
-          </button>
+            <h2>
+
+                Art isn't just something
+                <em>you see.</em>
+
+                It's something
+                <span>you experience.</span>
+
+            </h2>
 
 
-          <div class="art-information">
+            <p>
 
-            <span class="art-number">
-              02
-            </span>
+                Every piece I create starts with an idea,
+                an emotion or a story. My goal is to transform
+                those invisible things into something people
+                can actually see and connect with.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= WORK ================= -->
+
+<section class="work section" id="work">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
 
             <div>
 
-              <h3>
-                Untitled II
-              </h3>
+                <span class="small-label">
+                    SELECTED WORK
+                </span>
 
-              <p>
+                <h2>
+                    My <em>Art.</em>
+                </h2>
+
+            </div>
+
+
+            <p>
+
+                A collection of drawings, paintings
+                and visual experiments.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="filter-bar reveal">
+
+            <button class="filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="filter" data-filter="pencil">
+                Pencil
+            </button>
+
+            <button class="filter" data-filter="oil">
+                Oil Painting
+            </button>
+
+            <button class="filter" data-filter="mixed">
                 Mixed Media
-              </p>
+            </button>
 
-            </div>
+            <button class="filter" data-filter="mural">
+                Murals
+            </button>
 
-          </div>
-
-        </article>
+        </div>
 
 
 
-        <!-- ART 03 -->
+        <div class="gallery">
 
-        <article
-          class="art-card reveal"
-          data-category="oil"
-        >
+            <!-- ART 01 -->
 
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art3.jpg"
-            data-title="Expression"
-            data-medium="Oil on canvas"
-          >
-
-            <img
-              src="images/art3.jpg"
-              alt="Expression"
-              loading="lazy"
+            <article
+                class="art-card art-tall reveal"
+                data-category="pencil"
+                data-image="images/art1.jpg"
+                data-title="Portrait Study"
+                data-medium="Graphite on Paper"
             >
 
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
+                <div class="art-image">
 
-              <strong>
-                ↗
-              </strong>
-            </span>
+                    <img
+                        src="images/art1.jpg"
+                        alt="Portrait artwork"
+                    >
 
-          </button>
+                    <div class="art-overlay">
 
+                        <span>VIEW ARTWORK</span>
 
-          <div class="art-information">
+                        <div class="view-icon">
+                            ↗
+                        </div>
 
-            <span class="art-number">
-              03
-            </span>
+                    </div>
 
-            <div>
-
-              <h3>
-                Expression
-              </h3>
-
-              <p>
-                Oil on Canvas
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
+                </div>
 
 
+                <div class="art-information">
 
-        <!-- ART 04 -->
+                    <div>
+                        <span class="art-number">01</span>
 
-        <article
-          class="art-card art-wide reveal"
-          data-category="mixed"
-        >
+                        <h3>Portrait Study</h3>
+                    </div>
 
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art4.jpg"
-            data-title="Memory"
-            data-medium="Experimental artwork"
-          >
+                    <span>Graphite</span>
 
-            <img
-              src="images/art4.jpg"
-              alt="Memory artwork"
-              loading="lazy"
+                </div>
+
+            </article>
+
+
+
+            <!-- ART 02 -->
+
+            <article
+                class="art-card art-wide reveal"
+                data-category="oil"
+                data-image="images/art2.jpg"
+                data-title="Golden Silence"
+                data-medium="Oil on Canvas"
             >
 
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
+                <div class="art-image">
 
-              <strong>
-                ↗
-              </strong>
-            </span>
+                    <img
+                        src="images/art2.jpg"
+                        alt="Oil painting"
+                    >
 
-          </button>
+                    <div class="art-overlay">
 
+                        <span>VIEW ARTWORK</span>
 
-          <div class="art-information">
+                        <div class="view-icon">
+                            ↗
+                        </div>
 
-            <span class="art-number">
-              04
-            </span>
+                    </div>
 
-            <div>
-
-              <h3>
-                Memory
-              </h3>
-
-              <p>
-                Experimental Artwork
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
+                </div>
 
 
+                <div class="art-information">
 
-        <!-- ART 05 -->
+                    <div>
+                        <span class="art-number">02</span>
 
-        <article
-          class="art-card reveal"
-          data-category="pencil"
-        >
+                        <h3>Golden Silence</h3>
+                    </div>
 
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art5.jpg"
-            data-title="Untitled V"
-            data-medium="Graphite on paper"
-          >
+                    <span>Oil</span>
 
-            <img
-              src="images/art5.jpg"
-              alt="Untitled V"
-              loading="lazy"
+                </div>
+
+            </article>
+
+
+
+            <!-- ART 03 -->
+
+            <article
+                class="art-card reveal"
+                data-category="mixed"
+                data-image="images/art3.jpg"
+                data-title="Inner World"
+                data-medium="Mixed Media"
             >
 
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
+                <div class="art-image">
 
-              <strong>
-                ↗
-              </strong>
-            </span>
+                    <img
+                        src="images/art3.jpg"
+                        alt="Mixed media artwork"
+                    >
 
-          </button>
+                    <div class="art-overlay">
 
+                        <span>VIEW ARTWORK</span>
 
-          <div class="art-information">
+                        <div class="view-icon">
+                            ↗
+                        </div>
 
-            <span class="art-number">
-              05
-            </span>
+                    </div>
 
-            <div>
-
-              <h3>
-                Untitled V
-              </h3>
-
-              <p>
-                Graphite / Pencil
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
+                </div>
 
 
+                <div class="art-information">
 
-        <!-- ART 06 -->
+                    <div>
+                        <span class="art-number">03</span>
 
-        <article
-          class="art-card art-tall reveal"
-          data-category="mural"
-        >
+                        <h3>Inner World</h3>
+                    </div>
 
-          <button
-            class="art-image"
-            type="button"
-            data-image="images/art6.jpg"
-            data-title="New Perspective"
-            data-medium="Mural / Large Format"
-          >
+                    <span>Mixed Media</span>
 
-            <img
-              src="images/art6.jpg"
-              alt="New Perspective mural"
-              loading="lazy"
+                </div>
+
+            </article>
+
+
+
+            <!-- ART 04 -->
+
+            <article
+                class="art-card art-tall reveal"
+                data-category="pencil"
+                data-image="images/art4.jpg"
+                data-title="Human"
+                data-medium="Graphite"
             >
 
-            <span class="image-overlay">
-              <span>
-                View
-              </span>
+                <div class="art-image">
 
-              <strong>
-                ↗
-              </strong>
-            </span>
+                    <img
+                        src="images/art4.jpg"
+                        alt="Pencil artwork"
+                    >
 
-          </button>
+                    <div class="art-overlay">
 
+                        <span>VIEW ARTWORK</span>
 
-          <div class="art-information">
+                        <div class="view-icon">
+                            ↗
+                        </div>
 
-            <span class="art-number">
-              06
-            </span>
+                    </div>
 
-            <div>
-
-              <h3>
-                New Perspective
-              </h3>
-
-              <p>
-                Mural / Large Format
-              </p>
-
-            </div>
-
-          </div>
-
-        </article>
-
-      </div>
+                </div>
 
 
-      <!-- WORK FOOTER -->
+                <div class="art-information">
 
-      <div class="work-footer reveal">
+                    <div>
+                        <span class="art-number">04</span>
 
-        <span>
-          More work coming soon
-        </span>
+                        <h3>Human</h3>
+                    </div>
 
-        <a href="#contact">
-          Request full portfolio
-          <strong>↗</strong>
-        </a>
+                    <span>Graphite</span>
 
-      </div>
+                </div>
 
-    </section>
+            </article>
 
 
 
-    <!-- ===================================================
-         ARTIST ABOUT
-         =================================================== -->
+            <!-- ART 05 -->
 
-    <section
-      class="about section"
-      id="about"
-    >
+            <article
+                class="art-card reveal"
+                data-category="mural"
+                data-image="images/art5.jpg"
+                data-title="The Wall"
+                data-medium="Acrylic / Mural"
+            >
 
-      <div class="about-image reveal">
+                <div class="art-image">
 
-        <img
-          src="images/art5.jpg"
-          alt="Williams Art artwork"
-          loading="lazy"
-        >
+                    <img
+                        src="images/art5.jpg"
+                        alt="Mural artwork"
+                    >
 
-        <div class="about-image-label">
-          WILLIAMS JOSHUA
-          <br>
-          ARTIST
-        </div>
+                    <div class="art-overlay">
 
-      </div>
+                        <span>VIEW ARTWORK</span>
 
+                        <div class="view-icon">
+                            ↗
+                        </div>
 
-      <div class="about-content reveal">
+                    </div>
 
-        <div class="eyebrow">
-          About the artist
-        </div>
+                </div>
 
 
-        <h2>
-          I'm Williams.
-          <br>
-          <em>I make things that last.</em>
-        </h2>
+                <div class="art-information">
+
+                    <div>
+                        <span class="art-number">05</span>
+
+                        <h3>The Wall</h3>
+                    </div>
+
+                    <span>Mural</span>
+
+                </div>
+
+            </article>
 
 
-        <p>
 
-          I am an artist and creative based in Nigeria,
-          working across pencil, oil painting, murals
-          and experimental visual art.
+            <!-- ART 06 -->
 
-        </p>
+            <article
+                class="art-card art-wide reveal"
+                data-category="oil"
+                data-image="images/art6.jpg"
+                data-title="After Light"
+                data-medium="Oil on Canvas"
+            >
+
+                <div class="art-image">
+
+                    <img
+                        src="images/art6.jpg"
+                        alt="Oil artwork"
+                    >
+
+                    <div class="art-overlay">
+
+                        <span>VIEW ARTWORK</span>
+
+                        <div class="view-icon">
+                            ↗
+                        </div>
+
+                    </div>
+
+                </div>
 
 
-        <p>
+                <div class="art-information">
 
-          My approach is simple: pay attention,
-          tell the truth of the subject and make
-          every mark intentional.
+                    <div>
+                        <span class="art-number">06</span>
 
-        </p>
+                        <h3>After Light</h3>
+                    </div>
 
+                    <span>Oil</span>
 
-        <p>
+                </div>
 
-          I am especially interested in the meeting
-          point between traditional art, technology
-          and new ways of telling stories.
-
-        </p>
-
-
-        <div class="about-stats">
-
-          <div>
-            <strong>04+</strong>
-            <span>Art disciplines</span>
-          </div>
-
-          <div>
-            <strong>∞</strong>
-            <span>Ideas to explore</span>
-          </div>
-
-          <div>
-            <strong>01</strong>
-            <span>Growing vision</span>
-          </div>
+            </article>
 
         </div>
 
 
-        <a
-          href="#contact"
-          class="button button-outline"
-        >
 
-          <span>
-            Work with me
-          </span>
+        <div class="work-footer reveal">
 
-          <strong>
-            ↗
-          </strong>
+            <p>
+                More works coming soon.
+            </p>
 
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         PROCESS
-         =================================================== -->
-
-    <section
-      class="process section"
-      id="process"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            The process
-          </div>
-
-          <h2>
-            From idea to
-            <em>art.</em>
-          </h2>
+            <a href="#contact">
+                Commission a piece
+                <span>↗</span>
+            </a>
 
         </div>
-
-
-        <p>
-
-          A simple process built around
-          communication, detail and intention.
-
-        </p>
-
-      </div>
-
-
-      <div class="process-grid">
-
-
-        <article class="process-card reveal">
-
-          <span>
-            01
-          </span>
-
-          <h3>
-            Discover
-          </h3>
-
-          <p>
-
-            We discuss your idea, reference,
-            story, space and the feeling you
-            want the finished piece to carry.
-
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>
-            02
-          </span>
-
-          <h3>
-            Develop
-          </h3>
-
-          <p>
-
-            I study references, compositions
-            and materials before turning the
-            strongest direction into the artwork.
-
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>
-            03
-          </span>
-
-          <h3>
-            Create
-          </h3>
-
-          <p>
-
-            The artwork comes together through
-            drawing, painting, layering, correction
-            and detail.
-
-          </p>
-
-        </article>
-
-
-        <article class="process-card reveal">
-
-          <span>
-            04
-          </span>
-
-          <h3>
-            Deliver
-          </h3>
-
-          <p>
-
-            The finished piece is reviewed,
-            prepared carefully and delivered
-            according to the project.
-
-          </p>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         SERVICES
-         =================================================== -->
-
-    <section
-      class="services section"
-      id="services"
-    >
-
-      <div class="section-heading reveal">
-
-        <div>
-
-          <div class="eyebrow">
-            What I create
-          </div>
-
-          <h2>
-            Art for
-            <em>people & spaces.</em>
-          </h2>
-
-        </div>
-
-      </div>
-
-
-      <div class="service-list">
-
-
-        <article class="service-row reveal">
-
-          <span>
-            01
-          </span>
-
-          <div>
-            <h3>
-              Custom Portraits
-            </h3>
-          </div>
-
-          <p>
-
-            Detailed pencil and graphite portraits
-            made from your chosen photograph.
-
-          </p>
-
-          <strong>
-            ↗
-          </strong>
-
-        </article>
-
-
-        <article class="service-row reveal">
-
-          <span>
-            02
-          </span>
-
-          <div>
-            <h3>
-              Oil Paintings
-            </h3>
-          </div>
-
-          <p>
-
-            Original oil paintings for personal
-            collections, gifts and interiors.
-
-          </p>
-
-          <strong>
-            ↗
-          </strong>
-
-        </article>
-
-
-        <article class="service-row reveal">
-
-          <span>
-            03
-          </span>
-
-          <div>
-            <h3>
-              Murals & Large Art
-            </h3>
-          </div>
-
-          <p>
-
-            Large-format artwork designed for
-            homes, businesses, studios and spaces.
-
-          </p>
-
-          <strong>
-            ↗
-          </strong>
-
-        </article>
-
-
-        <article class="service-row reveal">
-
-          <span>
-            04
-          </span>
-
-          <div>
-            <h3>
-              Creative Projects
-            </h3>
-          </div>
-
-          <p>
-
-            Visual collaborations, experimental
-            pieces and art-led creative concepts.
-
-          </p>
-
-          <strong>
-            ↗
-          </strong>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         COMMISSION CTA
-         =================================================== -->
-
-    <section
-      class="commission"
-      id="commission"
-    >
-
-      <div class="commission-content reveal">
-
-        <div class="eyebrow">
-          Have an idea?
-        </div>
-
-
-        <h2>
-          Let's turn it into
-          <br>
-          <em>something real.</em>
-        </h2>
-
-
-        <p>
-
-          Tell me what you have in mind.
-          Whether it is a portrait, painting,
-          mural or an idea that does not fit
-          neatly into a category, let's talk.
-
-        </p>
-
-
-        <a
-          href="#contact"
-          class="button button-light"
-        >
-
-          <span>
-            Start a commission
-          </span>
-
-          <strong>
-            ↗
-          </strong>
-
-        </a>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- ===================================================
-         CONTACT
-         =================================================== -->
-
-    <section
-      class="contact section"
-      id="contact"
-    >
-
-      <div class="contact-content reveal">
-
-        <div class="eyebrow">
-          Get in touch
-        </div>
-
-
-        <h2>
-          Let's make
-          <br>
-          <em>something.</em>
-        </h2>
-
-
-        <p>
-
-          For commissions, collaborations,
-          exhibitions or general enquiries,
-          send a message and let's start
-          a conversation.
-
-        </p>
-
-
-        <div class="contact-details">
-
-          <a href="mailto:your@email.com">
-            your@email.com
-          </a>
-
-          <a href="#">
-            Instagram ↗
-          </a>
-
-          <a href="#">
-            TikTok ↗
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- CONTACT FORM -->
-
-      <form
-        class="contact-form reveal"
-        id="contactForm"
-      >
-
-        <div class="form-group">
-
-          <label for="name">
-            Your name
-          </label>
-
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="John Doe"
-            required
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="email">
-            Email address
-          </label>
-
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-          >
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="project">
-            Project type
-          </label>
-
-          <select
-            id="project"
-            name="project"
-          >
-
-            <option value="portrait">
-              Custom Portrait
-            </option>
-
-            <option value="painting">
-              Oil Painting
-            </option>
-
-            <option value="mural">
-              Mural
-            </option>
-
-            <option value="collaboration">
-              Collaboration
-            </option>
-
-            <option value="other">
-              Other
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label for="message">
-            Tell me about it
-          </label>
-
-          <textarea
-            id="message"
-            name="message"
-            rows="6"
-            placeholder="Tell me what you have in mind..."
-            required
-          ></textarea>
-
-        </div>
-
-
-        <button
-          type="submit"
-          class="button button-light"
-        >
-
-          <span>
-            Send enquiry
-          </span>
-
-          <strong>
-            ↗
-          </strong>
-
-        </button>
-
-
-        <p
-          class="form-message"
-          id="formMessage"
-          aria-live="polite"
-        ></p>
-
-      </form>
-
-    </section>
-
-  </main>
-
-
-
-  <!-- =====================================================
-       FOOTER
-       ===================================================== -->
-
-  <footer class="footer">
-
-    <div class="footer-main">
-
-      <a
-        href="#home"
-        class="brand"
-      >
-
-        <span class="brand-mark">
-          WJ
-        </span>
-
-        <span class="brand-name">
-          WILLIAMS ART
-        </span>
-
-      </a>
-
-
-      <p>
-        Art, ideas and stories — one mark at a time.
-      </p>
-
-
-      <div class="social-links">
-
-        <a
-          href="#"
-          aria-label="Instagram"
-        >
-          IG
-        </a>
-
-        <a
-          href="#"
-          aria-label="TikTok"
-        >
-          TK
-        </a>
-
-        <a
-          href="#"
-          aria-label="YouTube"
-        >
-          YT
-        </a>
-
-      </div>
 
     </div>
 
+</section>
 
-    <div class="footer-bottom">
 
-      <span>
-        © <span id="currentYear"></span>
-        Williams Art. All rights reserved.
-      </span>
 
-      <a href="#home">
-        Back to top ↑
-      </a>
+<!-- ================= ABOUT ================= -->
+
+<section class="about section" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image reveal">
+
+            <div class="about-image-frame">
+
+                <img
+                    src="images/art2.jpg"
+                    alt="Williams creating artwork"
+                >
+
+            </div>
+
+            <div class="about-badge">
+
+                <strong>W</strong>
+
+                <span>
+                    ART
+                    <br>
+                    2026
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="about-content reveal">
+
+            <span class="small-label">
+                ABOUT THE ARTIST
+            </span>
+
+            <h2>
+                Creating from
+                <em>curiosity.</em>
+            </h2>
+
+
+            <p class="lead">
+
+                I'm Williams — an artist fascinated by
+                people, emotions, technology and the
+                strange beauty of everyday life.
+
+            </p>
+
+
+            <p>
+
+                My work moves between pencil drawing,
+                painting, murals and experimental visual
+                art. I enjoy taking ordinary ideas and
+                pushing them into something unexpected.
+
+            </p>
+
+
+            <div class="about-stats">
+
+                <div>
+                    <strong>03+</strong>
+                    <span>Art Forms</span>
+                </div>
+
+                <div>
+                    <strong>∞</strong>
+                    <span>Ideas</span>
+                </div>
+
+                <div>
+                    <strong>01</strong>
+                    <span>Vision</span>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
-  </footer>
+</section>
 
 
 
-  <!-- =====================================================
-       LIGHTBOX
-       ===================================================== -->
+<!-- ================= PROCESS ================= -->
 
-  <div
-    class="lightbox"
-    id="lightbox"
-    aria-hidden="true"
-  >
+<section class="process section">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div>
+
+                <span class="small-label">
+                    THE PROCESS
+                </span>
+
+                <h2>
+                    From thought
+                    <em>to canvas.</em>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="process-grid">
+
+            <div class="process-card reveal">
+
+                <span>01</span>
+
+                <h3>Idea</h3>
+
+                <p>
+                    Every artwork begins with a concept,
+                    emotion or question.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span>02</span>
+
+                <h3>Sketch</h3>
+
+                <p>
+                    Rough lines become structure and
+                    the visual story begins to form.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span>03</span>
+
+                <h3>Create</h3>
+
+                <p>
+                    The idea becomes a physical artwork
+                    through patience and detail.
+                </p>
+
+            </div>
+
+
+            <div class="process-card reveal">
+
+                <span>04</span>
+
+                <h3>Connect</h3>
+
+                <p>
+                    The finished piece leaves the studio
+                    and becomes part of someone's world.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SERVICES ================= -->
+
+<section class="services section" id="services">
+
+    <div class="container">
+
+        <div class="section-heading reveal">
+
+            <div>
+
+                <span class="small-label">
+                    WHAT I CREATE
+                </span>
+
+                <h2>
+                    Art for
+                    <em>your world.</em>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="service-list">
+
+            <div class="service-row reveal">
+
+                <span class="service-number">01</span>
+
+                <div>
+                    <h3>Portrait Drawing</h3>
+                    <p>
+                        Detailed graphite portraits created
+                        from your favourite photograph.
+                    </p>
+                </div>
+
+                <span class="service-arrow">↗</span>
+
+            </div>
+
+
+            <div class="service-row reveal">
+
+                <span class="service-number">02</span>
+
+                <div>
+                    <h3>Oil Painting</h3>
+                    <p>
+                        Rich, expressive paintings designed
+                        to become statement pieces.
+                    </p>
+                </div>
+
+                <span class="service-arrow">↗</span>
+
+            </div>
+
+
+            <div class="service-row reveal">
+
+                <span class="service-number">03</span>
+
+                <div>
+                    <h3>Murals</h3>
+                    <p>
+                        Large-scale artwork for homes,
+                        businesses and creative spaces.
+                    </p>
+                </div>
+
+                <span class="service-arrow">↗</span>
+
+            </div>
+
+
+            <div class="service-row reveal">
+
+                <span class="service-number">04</span>
+
+                <div>
+                    <h3>Custom Artwork</h3>
+                    <p>
+                        Unique artwork developed around
+                        your story, idea or vision.
+                    </p>
+                </div>
+
+                <span class="service-arrow">↗</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= COMMISSION ================= -->
+
+<section class="commission section">
+
+    <div class="commission-glow"></div>
+
+    <div class="container commission-content reveal">
+
+        <span class="small-label">
+            HAVE AN IDEA?
+        </span>
+
+        <h2>
+            Let's turn it
+            <br>
+            into <em>art.</em>
+        </h2>
+
+        <p>
+            Tell me what you're imagining.
+            I'll help turn the idea into something
+            you can actually see.
+        </p>
+
+        <a href="#contact" class="button button-light">
+            Start a Conversation
+            <span>↗</span>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section class="contact section" id="contact">
+
+    <div class="container contact-grid">
+
+        <div class="contact-content reveal">
+
+            <span class="small-label">
+                CONTACT
+            </span>
+
+            <h2>
+                Let's create
+                <em>something.</em>
+            </h2>
+
+            <p>
+                Have a commission, collaboration,
+                mural idea or just want to talk art?
+                Send me a message.
+            </p>
+
+
+            <div class="contact-details">
+
+                <div>
+                    <span>EMAIL</span>
+                    <a href="mailto:your@email.com">
+                        your@email.com
+                    </a>
+                </div>
+
+
+                <div>
+                    <span>LOCATION</span>
+                    <p>
+                        Nigeria
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <form class="contact-form reveal" id="contactForm">
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="John Doe"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@email.com"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="service">
+                    What are you interested in?
+                </label>
+
+                <select id="service" name="service">
+
+                    <option value="">
+                        Select one
+                    </option>
+
+                    <option value="Portrait Drawing">
+                        Portrait Drawing
+                    </option>
+
+                    <option value="Oil Painting">
+                        Oil Painting
+                    </option>
+
+                    <option value="Mural">
+                        Mural
+                    </option>
+
+                    <option value="Custom Artwork">
+                        Custom Artwork
+                    </option>
+
+                    <option value="Collaboration">
+                        Collaboration
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="message">
+                    Your Message
+                </label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="6"
+                    placeholder="Tell me about your idea..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="button button-primary form-button"
+            >
+
+                Send Message
+
+                <span>↗</span>
+
+            </button>
+
+
+            <div
+                class="form-message"
+                id="formMessage"
+            ></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="footer-main">
+
+            <div>
+
+                <a href="#home" class="footer-brand">
+                    WILLIAMS<span>ART</span>
+                </a>
+
+                <p>
+                    Turning ideas into visual stories.
+                </p>
+
+            </div>
+
+
+            <div class="footer-social">
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    TikTok
+                </a>
+
+                <a href="#">
+                    YouTube
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © <span id="currentYear"></span>
+                Williams Art.
+            </span>
+
+            <span>
+                Made with creativity.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div class="lightbox" id="lightbox">
 
     <button
-      class="lightbox-close"
-      id="lightboxClose"
-      type="button"
-      aria-label="Close artwork"
+        class="lightbox-close"
+        id="lightboxClose"
     >
-      ×
+        ×
     </button>
 
 
-    <div class="lightbox-inner">
+    <div class="lightbox-content">
 
-      <div class="lightbox-image-wrap">
+        <div class="lightbox-image-wrap">
 
-        <img
-          id="lightboxImage"
-          src=""
-          alt=""
-        >
+            <img
+                id="lightboxImage"
+                src=""
+                alt=""
+            >
 
-      </div>
+        </div>
 
 
-      <div class="lightbox-info">
+        <div class="lightbox-info">
 
-        <span id="lightboxMedium">
-          Artwork
-        </span>
+            <span id="lightboxMedium">
+                Medium
+            </span>
 
-        <h3 id="lightboxTitle">
-          Artwork title
-        </h3>
+            <h2 id="lightboxTitle">
+                Artwork
+            </h2>
 
-      </div>
+        </div>
 
     </div>
 
-  </div>
+</div>
 
 
 
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
