@@ -1,284 +1,520 @@
 /* =========================================================
    WILLIAMS ART
-   INTERACTIVE PORTFOLIO
-   ========================================================= */
+   LIGHT LUXURY ART GALLERY
+   MAIN JAVASCRIPT
+========================================================= */
 
 
-/* ================= DOM ================= */
+/* =========================================================
+   01. DOM READY
+========================================================= */
 
-const pageLoader =
-    document.getElementById("pageLoader");
+document.addEventListener("DOMContentLoaded", () => {
 
-const siteHeader =
-    document.getElementById("siteHeader");
-
-const menuToggle =
-    document.getElementById("menuToggle");
-
-const mainNavigation =
-    document.getElementById("mainNavigation");
-
-const cursorDot =
-    document.getElementById("cursorDot");
-
-const cursorRing =
-    document.getElementById("cursorRing");
-
-const scrollProgress =
-    document.getElementById("scrollProgress");
-
-const currentYear =
-    document.getElementById("currentYear");
-
-const contactForm =
-    document.getElementById("contactForm");
-
-const formMessage =
-    document.getElementById("formMessage");
-
-const lightbox =
-    document.getElementById("lightbox");
-
-const lightboxImage =
-    document.getElementById("lightboxImage");
-
-const lightboxTitle =
-    document.getElementById("lightboxTitle");
-
-const lightboxMedium =
-    document.getElementById("lightboxMedium");
-
-const lightboxClose =
-    document.getElementById("lightboxClose");
-
-
-/* ================= LOADER ================= */
-
-window.addEventListener("load", () => {
-
-    setTimeout(() => {
-
-        pageLoader.classList.add("hidden");
-
-    }, 1200);
+    initializeWebsite();
 
 });
 
 
-/* ================= YEAR ================= */
+/* =========================================================
+   02. MAIN INITIALIZER
+========================================================= */
 
-if (currentYear) {
+function initializeWebsite() {
 
-    currentYear.textContent =
+    setupLoader();
+
+    setupYear();
+
+    setupParticles();
+
+    setupScrollProgress();
+
+    setupHeader();
+
+    setupMobileMenu();
+
+    setupSmoothScrolling();
+
+    setupRevealAnimations();
+
+    setupGalleryFilters();
+
+    setupLightbox();
+
+    setupImageErrors();
+
+    setupHeroParallax();
+
+    setupActiveNavigation();
+
+    setupArtworkHover();
+
+    setupContactForm();
+
+    setupCardTilt();
+
+    setupHeroMovement();
+
+    setupCursor();
+
+    setupFormFocus();
+
+    setupKeyboardNavigation();
+
+    consoleBranding();
+
+}
+
+
+/* =========================================================
+   03. PAGE LOADER
+========================================================= */
+
+function setupLoader() {
+
+    const loader =
+        document.getElementById("pageLoader");
+
+    if (!loader) {
+        return;
+    }
+
+
+    const hideLoader = () => {
+
+        setTimeout(() => {
+
+            loader.classList.add("hidden");
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+        }, 900);
+
+    };
+
+
+    document.body.classList.add(
+        "no-scroll"
+    );
+
+
+    if (document.readyState === "complete") {
+
+        hideLoader();
+
+    } else {
+
+        window.addEventListener(
+            "load",
+            hideLoader,
+            {
+                once: true
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   04. CURRENT YEAR
+========================================================= */
+
+function setupYear() {
+
+    const yearElement =
+        document.getElementById("currentYear");
+
+    if (!yearElement) {
+        return;
+    }
+
+
+    yearElement.textContent =
         new Date().getFullYear();
 
 }
 
 
-/* ================= HEADER ================= */
+/* =========================================================
+   05. PARTICLE SYSTEM
+========================================================= */
 
-function updateHeader() {
+function setupParticles() {
 
-    if (window.scrollY > 50) {
+    const particleContainer =
+        document.getElementById("particles");
 
-        siteHeader.classList.add("scrolled");
+    if (!particleContainer) {
+        return;
+    }
 
-    } else {
 
-        siteHeader.classList.remove("scrolled");
+    const screenWidth =
+        window.innerWidth;
+
+
+    let particleCount = 18;
+
+
+    if (screenWidth < 800) {
+
+        particleCount = 10;
+
+    }
+
+
+    if (screenWidth < 500) {
+
+        particleCount = 6;
+
+    }
+
+
+    for (
+        let i = 0;
+        i < particleCount;
+        i++
+    ) {
+
+        const particle =
+            document.createElement("span");
+
+
+        particle.classList.add(
+            "particle"
+        );
+
+
+        const size =
+            Math.random() * 4 + 2;
+
+
+        const left =
+            Math.random() * 100;
+
+
+        const delay =
+            Math.random() * 12;
+
+
+        const duration =
+            Math.random() * 10 + 10;
+
+
+        particle.style.width =
+            `${size}px`;
+
+
+        particle.style.height =
+            `${size}px`;
+
+
+        particle.style.left =
+            `${left}%`;
+
+
+        particle.style.animationDelay =
+            `${delay}s`;
+
+
+        particle.style.animationDuration =
+            `${duration}s`;
+
+
+        particleContainer.appendChild(
+            particle
+        );
 
     }
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateHeader,
-    { passive: true }
-);
+/* =========================================================
+   06. SCROLL PROGRESS
+========================================================= */
 
-updateHeader();
-
-
-/* ================= SCROLL PROGRESS ================= */
-
-function updateScrollProgress() {
-
-    const scrollTop =
-        window.scrollY;
-
-    const documentHeight =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+function setupScrollProgress() {
 
     const progress =
-        documentHeight > 0
-            ? (scrollTop / documentHeight) * 100
-            : 0;
+        document.getElementById(
+            "scrollProgress"
+        );
 
-    scrollProgress.style.width =
-        `${progress}%`;
+
+    if (!progress) {
+        return;
+    }
+
+
+    const updateProgress = () => {
+
+        const scrollTop =
+            window.scrollY;
+
+
+        const documentHeight =
+            document.documentElement
+                .scrollHeight;
+
+
+        const viewportHeight =
+            window.innerHeight;
+
+
+        const scrollable =
+            documentHeight -
+            viewportHeight;
+
+
+        if (scrollable <= 0) {
+
+            progress.style.width = "0%";
+
+            return;
+
+        }
+
+
+        const percentage =
+            (scrollTop / scrollable) *
+            100;
+
+
+        progress.style.width =
+            `${percentage}%`;
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateProgress,
+        {
+            passive: true
+        }
+    );
+
+
+    updateProgress();
 
 }
 
 
-window.addEventListener(
-    "scroll",
-    updateScrollProgress,
-    { passive: true }
-);
+/* =========================================================
+   07. HEADER SCROLL EFFECT
+========================================================= */
+
+function setupHeader() {
+
+    const header =
+        document.getElementById(
+            "siteHeader"
+        );
 
 
-/* ================= CUSTOM CURSOR ================= */
-
-if (
-    window.matchMedia(
-        "(pointer: fine)"
-    ).matches
-) {
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    let ringX = 0;
-    let ringY = 0;
+    if (!header) {
+        return;
+    }
 
 
-    document.addEventListener(
-        "mousemove",
-        (event) => {
+    const updateHeader = () => {
 
-            mouseX = event.clientX;
-            mouseY = event.clientY;
+        if (window.scrollY > 50) {
 
-            cursorDot.style.left =
-                `${mouseX}px`;
+            header.classList.add(
+                "scrolled"
+            );
 
-            cursorDot.style.top =
-                `${mouseY}px`;
+        } else {
+
+            header.classList.remove(
+                "scrolled"
+            );
+
+        }
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        {
+            passive: true
+        }
+    );
+
+
+    updateHeader();
+
+}
+
+
+/* =========================================================
+   08. MOBILE NAVIGATION
+========================================================= */
+
+function setupMobileMenu() {
+
+    const menuToggle =
+        document.getElementById(
+            "menuToggle"
+        );
+
+
+    const navigation =
+        document.getElementById(
+            "mainNavigation"
+        );
+
+
+    if (!menuToggle || !navigation) {
+        return;
+    }
+
+
+    menuToggle.addEventListener(
+        "click",
+        () => {
+
+            const isOpen =
+                navigation.classList.toggle(
+                    "open"
+                );
+
+
+            menuToggle.classList.toggle(
+                "active",
+                isOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+
+            document.body.classList.toggle(
+                "no-scroll",
+                isOpen
+            );
 
         }
     );
 
 
-    function animateCursor() {
-
-        ringX +=
-            (mouseX - ringX) * .12;
-
-        ringY +=
-            (mouseY - ringY) * .12;
-
-
-        cursorRing.style.left =
-            `${ringX}px`;
-
-        cursorRing.style.top =
-            `${ringY}px`;
-
-
-        requestAnimationFrame(
-            animateCursor
-        );
-
-    }
-
-
-    animateCursor();
-
-
-    const interactiveElements =
-        document.querySelectorAll(
-            "a, button, .art-card, input, textarea, select"
+    const links =
+        navigation.querySelectorAll(
+            "a"
         );
 
 
-    interactiveElements.forEach(
-        element => {
-
-            element.addEventListener(
-                "mouseenter",
-                () => {
-
-                    cursorRing.classList.add(
-                        "active"
-                    );
-
-                }
-            );
-
-
-            element.addEventListener(
-                "mouseleave",
-                () => {
-
-                    cursorRing.classList.remove(
-                        "active"
-                    );
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-/* ================= MOBILE MENU ================= */
-
-menuToggle.addEventListener(
-    "click",
-    () => {
-
-        mainNavigation.classList.toggle(
-            "open"
-        );
-
-    }
-);
-
-
-document.querySelectorAll(
-    ".nav-link"
-).forEach(
-    link => {
+    links.forEach((link) => {
 
         link.addEventListener(
             "click",
             () => {
 
-                mainNavigation.classList.remove(
+                navigation.classList.remove(
                     "open"
+                );
+
+
+                menuToggle.classList.remove(
+                    "active"
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                document.body.classList.remove(
+                    "no-scroll"
                 );
 
             }
         );
 
-    }
-);
+    });
 
 
-/* ================= SMOOTH SCROLL ================= */
+    window.addEventListener(
+        "resize",
+        () => {
 
-document.querySelectorAll(
-    'a[href^="#"]'
-).forEach(
-    link => {
+            if (
+                window.innerWidth > 800
+            ) {
+
+                navigation.classList.remove(
+                    "open"
+                );
+
+
+                menuToggle.classList.remove(
+                    "active"
+                );
+
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+
+                document.body.classList.remove(
+                    "no-scroll"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   09. SMOOTH SCROLLING
+========================================================= */
+
+function setupSmoothScrolling() {
+
+    const links =
+        document.querySelectorAll(
+            'a[href^="#"]'
+        );
+
+
+    links.forEach((link) => {
 
         link.addEventListener(
             "click",
-            event => {
+            (event) => {
 
                 const targetId =
-                    link.getAttribute("href");
+                    link.getAttribute(
+                        "href"
+                    );
+
 
                 if (
                     !targetId ||
                     targetId === "#"
                 ) {
+
                     return;
+
                 }
 
 
@@ -289,7 +525,9 @@ document.querySelectorAll(
 
 
                 if (!target) {
+
                     return;
+
                 }
 
 
@@ -304,139 +542,46 @@ document.querySelectorAll(
             }
         );
 
-    }
-);
+    });
+
+}
 
 
-/* ================= REVEAL ANIMATION ================= */
+/* =========================================================
+   10. SCROLL REVEAL
+========================================================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
+function setupRevealAnimations() {
 
-
-const revealObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold: .12
-        }
-    );
-
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
+    const elements =
+        document.querySelectorAll(
+            ".reveal"
         );
 
+
+    if (!elements.length) {
+        return;
     }
-);
 
 
-/* ================= GALLERY FILTER ================= */
+    const observer =
+        new IntersectionObserver(
+            (entries, observerInstance) => {
 
-const filters =
-    document.querySelectorAll(
-        ".filter"
-    );
-
-const artworks =
-    document.querySelectorAll(
-        ".art-card"
-    );
-
-
-filters.forEach(
-    filter => {
-
-        filter.addEventListener(
-            "click",
-            () => {
-
-                filters.forEach(
-                    item =>
-                        item.classList.remove(
-                            "active"
-                        )
-                );
-
-
-                filter.classList.add(
-                    "active"
-                );
-
-
-                const selectedFilter =
-                    filter.dataset.filter;
-
-
-                artworks.forEach(
-                    artwork => {
-
-                        const category =
-                            artwork.dataset.category;
-
+                entries.forEach(
+                    (entry) => {
 
                         if (
-                            selectedFilter ===
-                            "all" ||
-                            category ===
-                            selectedFilter
+                            entry.isIntersecting
                         ) {
 
-                            artwork.classList.remove(
-                                "hidden"
+                            entry.target.classList.add(
+                                "visible"
                             );
 
-                            artwork.animate(
-                                [
-                                    {
-                                        opacity: 0,
-                                        transform:
-                                            "translateY(25px)"
-                                    },
-                                    {
-                                        opacity: 1,
-                                        transform:
-                                            "translateY(0)"
-                                    }
-                                ],
-                                {
-                                    duration: 500,
-                                    easing:
-                                        "cubic-bezier(.22,1,.36,1)"
-                                }
-                            );
 
-                        } else {
-
-                            artwork.classList.add(
-                                "hidden"
+                            observerInstance.unobserve(
+                                entry.target
                             );
 
                         }
@@ -444,211 +589,545 @@ filters.forEach(
                     }
                 );
 
+            },
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -40px 0px"
             }
         );
 
-    }
-);
 
+    elements.forEach((element) => {
 
-/* ================= LIGHTBOX ================= */
+        observer.observe(element);
 
-artworks.forEach(
-    artwork => {
-
-        artwork.addEventListener(
-            "click",
-            () => {
-
-                const image =
-                    artwork.dataset.image;
-
-                const title =
-                    artwork.dataset.title;
-
-                const medium =
-                    artwork.dataset.medium;
-
-
-                lightboxImage.src =
-                    image;
-
-                lightboxImage.alt =
-                    title;
-
-                lightboxTitle.textContent =
-                    title;
-
-                lightboxMedium.textContent =
-                    medium;
-
-
-                lightbox.classList.add(
-                    "active"
-                );
-
-
-                document.body.style.overflow =
-                    "hidden";
-
-            }
-        );
-
-    }
-);
-
-
-function closeLightbox() {
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-    document.body.style.overflow =
-        "";
+    });
 
 }
 
 
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
+/* =========================================================
+   11. GALLERY FILTERS
+========================================================= */
+
+function setupGalleryFilters() {
+
+    const filterButtons =
+        document.querySelectorAll(
+            ".filter-button"
+        );
 
 
-lightbox.addEventListener(
-    "click",
-    event => {
-
-        if (
-            event.target === lightbox
-        ) {
-
-            closeLightbox();
-
-        }
-
-    }
-);
+    const cards =
+        document.querySelectorAll(
+            ".art-card"
+        );
 
 
-document.addEventListener(
-    "keydown",
-    event => {
+    if (
+        !filterButtons.length ||
+        !cards.length
+    ) {
 
-        if (
-            event.key === "Escape"
-        ) {
-
-            closeLightbox();
-
-        }
+        return;
 
     }
-);
 
 
-/* ================= IMAGE ERROR HANDLING ================= */
+    filterButtons.forEach(
+        (button) => {
 
-document.querySelectorAll(
-    "img"
-).forEach(
-    image => {
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const filter =
+                        button.dataset.filter;
+
+
+                    filterButtons.forEach(
+                        (item) => {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    button.classList.add(
+                        "active"
+                    );
+
+
+                    cards.forEach(
+                        (card, index) => {
+
+                            const category =
+                                card.dataset.category;
+
+
+                            const shouldShow =
+                                filter === "all" ||
+                                category === filter;
+
+
+                            if (shouldShow) {
+
+                                card.style.display =
+                                    "block";
+
+
+                                requestAnimationFrame(
+                                    () => {
+
+                                        card.style.opacity =
+                                            "0";
+
+
+                                        card.style.transform =
+                                            "translateY(20px)";
+
+
+                                        requestAnimationFrame(
+                                            () => {
+
+                                                card.style.transition =
+                                                    "opacity .5s ease, transform .5s ease";
+
+
+                                                card.style.opacity =
+                                                    "1";
+
+
+                                                card.style.transform =
+                                                    "translateY(0)";
+
+                                            }
+                                        );
+
+                                    }
+                                );
+
+                            } else {
+
+                                card.style.opacity =
+                                    "0";
+
+
+                                card.style.transform =
+                                    "translateY(20px)";
+
+
+                                setTimeout(
+                                    () => {
+
+                                        card.style.display =
+                                            "none";
+
+                                    },
+                                    350
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   12. LIGHTBOX
+========================================================= */
+
+function setupLightbox() {
+
+    const lightbox =
+        document.getElementById(
+            "lightbox"
+        );
+
+
+    const closeButton =
+        document.getElementById(
+            "lightboxClose"
+        );
+
+
+    const image =
+        document.getElementById(
+            "lightboxImage"
+        );
+
+
+    const title =
+        document.getElementById(
+            "lightboxTitle"
+        );
+
+
+    const medium =
+        document.getElementById(
+            "lightboxMedium"
+        );
+
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card"
+        );
+
+
+    if (
+        !lightbox ||
+        !closeButton ||
+        !image ||
+        !title ||
+        !medium
+    ) {
+
+        return;
+
+    }
+
+
+    const openLightbox =
+        (card) => {
+
+            const imageSource =
+                card.dataset.image;
+
+
+            const artworkTitle =
+                card.dataset.title ||
+                "Artwork";
+
+
+            const artworkMedium =
+                card.dataset.medium ||
+                "Original Artwork";
+
+
+            if (!imageSource) {
+
+                return;
+
+            }
+
+
+            image.src =
+                imageSource;
+
+
+            image.alt =
+                artworkTitle;
+
+
+            title.textContent =
+                artworkTitle;
+
+
+            medium.textContent =
+                artworkMedium;
+
+
+            lightbox.classList.add(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+
+            document.body.classList.add(
+                "no-scroll"
+            );
+
+        };
+
+
+    const closeLightbox =
+        () => {
+
+            lightbox.classList.remove(
+                "active"
+            );
+
+
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+
+            document.body.classList.remove(
+                "no-scroll"
+            );
+
+
+            setTimeout(
+                () => {
+
+                    image.src = "";
+
+                },
+                300
+            );
+
+        };
+
+
+    cards.forEach((card) => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                openLightbox(card);
+
+            }
+        );
+
+    });
+
+
+    closeButton.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+
+    lightbox.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains(
+                    "active"
+                )
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   13. IMAGE ERROR HANDLING
+========================================================= */
+
+function setupImageErrors() {
+
+    const images =
+        document.querySelectorAll(
+            "img"
+        );
+
+
+    images.forEach((image) => {
 
         image.addEventListener(
             "error",
             () => {
 
-                image.style.background =
-                    "linear-gradient(135deg,#211a13,#110d0b)";
+                image.classList.add(
+                    "image-error"
+                );
 
-                image.style.minHeight =
-                    "300px";
 
                 image.alt =
                     "Artwork image unavailable";
 
+
+                image.style.objectFit =
+                    "contain";
+
             }
         );
 
+    });
+
+}
+
+
+/* =========================================================
+   14. HERO PARALLAX
+========================================================= */
+
+function setupHeroParallax() {
+
+    const heroImage =
+        document.querySelector(
+            ".hero-image"
+        );
+
+
+    if (!heroImage) {
+        return;
     }
-);
 
 
-/* ================= HERO PARALLAX ================= */
-
-const heroImage =
-    document.querySelector(
-        ".hero-image"
-    );
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
 
-if (heroImage) {
+    if (reduceMotion) {
+        return;
+    }
+
+
+    let ticking = false;
+
+
+    const updateParallax =
+        () => {
+
+            const scroll =
+                window.scrollY;
+
+
+            if (scroll < window.innerHeight) {
+
+                const movement =
+                    scroll * 0.08;
+
+
+                heroImage.style.transform =
+                    `translateY(${movement}px) scale(1.03)`;
+
+            }
+
+
+            ticking = false;
+
+        };
+
 
     window.addEventListener(
         "scroll",
         () => {
 
-            if (
-                window.innerWidth > 800
-            ) {
+            if (!ticking) {
 
-                const movement =
-                    window.scrollY * .08;
+                window.requestAnimationFrame(
+                    updateParallax
+                );
 
-                heroImage.style.transform =
-                    `scale(1.03) translateY(${movement}px)`;
+
+                ticking = true;
 
             }
 
         },
-        { passive: true }
+        {
+            passive: true
+        }
     );
 
 }
 
 
-/* ================= ACTIVE NAV ================= */
+/* =========================================================
+   15. ACTIVE NAVIGATION
+========================================================= */
 
-const sections =
-    document.querySelectorAll(
-        "main section[id]"
-    );
+function setupActiveNavigation() {
 
-
-const navLinks =
-    document.querySelectorAll(
-        ".nav-link"
-    );
+    const sections =
+        document.querySelectorAll(
+            "main section[id]"
+        );
 
 
-const sectionObserver =
-    new IntersectionObserver(
-        entries => {
+    const navLinks =
+        document.querySelectorAll(
+            ".nav-link"
+        );
 
-            entries.forEach(
-                entry => {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+    if (
+        !sections.length ||
+        !navLinks.length
+    ) {
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+
+                            return;
+
+                        }
+
 
                         const id =
                             entry.target.id;
 
 
                         navLinks.forEach(
-                            link => {
+                            (link) => {
 
                                 link.classList.remove(
                                     "active"
                                 );
 
 
-                                if (
+                                const href =
                                     link.getAttribute(
                                         "href"
-                                    ) ===
+                                    );
+
+
+                                if (
+                                    href ===
                                     `#${id}`
                                 ) {
 
@@ -662,47 +1141,70 @@ const sectionObserver =
                         );
 
                     }
+                );
 
-                }
-            );
+            },
+            {
+                rootMargin:
+                    "-30% 0px -60% 0px"
+            }
+        );
 
-        },
-        {
-            rootMargin:
-                "-35% 0px -55% 0px"
+
+    sections.forEach(
+        (section) => {
+
+            observer.observe(section);
+
         }
     );
 
+}
 
-sections.forEach(
-    section => {
 
-        sectionObserver.observe(
-            section
+/* =========================================================
+   16. ARTWORK HOVER EFFECT
+========================================================= */
+
+function setupArtworkHover() {
+
+    const gallery =
+        document.getElementById(
+            "artGallery"
         );
 
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card"
+        );
+
+
+    if (
+        !gallery ||
+        !cards.length
+    ) {
+
+        return;
+
     }
-);
 
 
-/* ================= ARTWORK HOVER ================= */
+    cards.forEach((card) => {
 
-artworks.forEach(
-    artwork => {
-
-        artwork.addEventListener(
+        card.addEventListener(
             "mouseenter",
             () => {
 
-                artworks.forEach(
-                    other => {
+                cards.forEach(
+                    (otherCard) => {
 
                         if (
-                            other !== artwork
+                            otherCard !== card
                         ) {
 
-                            other.style.opacity =
-                                ".55";
+                            otherCard.style.opacity =
+                                "0.72";
 
                         }
 
@@ -713,15 +1215,15 @@ artworks.forEach(
         );
 
 
-        artwork.addEventListener(
+        card.addEventListener(
             "mouseleave",
             () => {
 
-                artworks.forEach(
-                    other => {
+                cards.forEach(
+                    (otherCard) => {
 
-                        other.style.opacity =
-                            "";
+                        otherCard.style.opacity =
+                            "1";
 
                     }
                 );
@@ -729,161 +1231,301 @@ artworks.forEach(
             }
         );
 
+    });
+
+}
+
+
+/* =========================================================
+   17. CONTACT FORM
+========================================================= */
+
+function setupContactForm() {
+
+    const form =
+        document.getElementById(
+            "contactForm"
+        );
+
+
+    if (!form) {
+        return;
     }
-);
 
 
-/* ================= CONTACT FORM ================= */
+    form.addEventListener(
+        "submit",
+        (event) => {
 
-contactForm.addEventListener(
-    "submit",
-    event => {
-
-        event.preventDefault();
+            event.preventDefault();
 
 
-        const name =
-            document.getElementById(
-                "name"
-            ).value.trim();
+            const name =
+                document.getElementById(
+                    "name"
+                )?.value.trim();
 
 
-        const email =
-            document.getElementById(
-                "email"
-            ).value.trim();
+            const email =
+                document.getElementById(
+                    "email"
+                )?.value.trim();
 
 
-        const service =
-            document.getElementById(
-                "service"
-            ).value;
+            const service =
+                document.getElementById(
+                    "service"
+                )?.value;
 
 
-        const message =
-            document.getElementById(
-                "message"
-            ).value.trim();
+            const message =
+                document.getElementById(
+                    "message"
+                )?.value.trim();
 
 
-        if (
-            !name ||
-            !email ||
-            !message
-        ) {
+            if (
+                !name ||
+                !email ||
+                !service ||
+                !message
+            ) {
 
-            formMessage.textContent =
-                "Please fill in all required fields.";
-
-            return;
-
-        }
-
-
-        /*
-          CHANGE THIS EMAIL
-          TO YOUR REAL EMAIL.
-        */
-
-        const artistEmail =
-            "your@email.com";
+                showFormMessage(
+                    "Please complete all fields.",
+                    "error"
+                );
 
 
-        const subject =
-            encodeURIComponent(
-                `Art Commission — ${service || "General Inquiry"}`
-            );
+                return;
+
+            }
 
 
-        const body =
-            encodeURIComponent(
-                `Hello Williams,
+            if (!isValidEmail(email)) {
+
+                showFormMessage(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+
+                return;
+
+            }
+
+
+            const artistEmail =
+                "your@email.com";
+
+
+            const subject =
+                encodeURIComponent(
+                    `Artwork Enquiry — ${service}`
+                );
+
+
+            const body =
+                encodeURIComponent(
+                    `Hello Williams,
 
 My name is ${name}.
 
 I'm interested in:
-${service || "Artwork / Collaboration"}
+${service}
 
-My message:
+Message:
 ${message}
 
-You can reply to me at:
-${email}`
+My email:
+${email}
+
+Thank you.`
+                );
+
+
+            const mailto =
+                `mailto:${artistEmail}?subject=${subject}&body=${body}`;
+
+
+            showFormMessage(
+                "Opening your email app...",
+                "success"
             );
 
 
-        window.location.href =
-            `mailto:${artistEmail}?subject=${subject}&body=${body}`;
+            window.location.href =
+                mailto;
 
-
-        formMessage.textContent =
-            "Opening your email app...";
-
-    }
-);
-
-
-/* ================= TILT EFFECT ================= */
-
-const tiltCards =
-    document.querySelectorAll(
-        ".art-card, .process-card"
+        }
     );
 
+}
 
-tiltCards.forEach(
-    card => {
+
+/* =========================================================
+   18. EMAIL VALIDATION
+========================================================= */
+
+function isValidEmail(email) {
+
+    const pattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+    return pattern.test(email);
+
+}
+
+
+/* =========================================================
+   19. FORM MESSAGE
+========================================================= */
+
+function showFormMessage(
+    message,
+    type
+) {
+
+    let messageElement =
+        document.querySelector(
+            ".form-message"
+        );
+
+
+    if (!messageElement) {
+
+        messageElement =
+            document.createElement(
+                "p"
+            );
+
+
+        messageElement.className =
+            "form-message";
+
+
+        const form =
+            document.getElementById(
+                "contactForm"
+            );
+
+
+        if (form) {
+
+            form.appendChild(
+                messageElement
+            );
+
+        }
+
+    }
+
+
+    messageElement.textContent =
+        message;
+
+
+    messageElement.style.marginTop =
+        "10px";
+
+
+    messageElement.style.fontSize =
+        "11px";
+
+
+    messageElement.style.color =
+        type === "error"
+            ? "#702c3a"
+            : "#806b55";
+
+
+    messageElement.style.opacity =
+        "1";
+
+
+    setTimeout(
+        () => {
+
+            messageElement.style.opacity =
+                "0";
+
+        },
+        5000
+    );
+
+}
+
+
+/* =========================================================
+   20. CARD TILT
+========================================================= */
+
+function setupCardTilt() {
+
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (reduceMotion) {
+        return;
+    }
+
+
+    if (window.innerWidth <= 800) {
+        return;
+    }
+
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card, .process-card"
+        );
+
+
+    cards.forEach((card) => {
 
         card.addEventListener(
             "mousemove",
-            event => {
-
-                if (
-                    window.innerWidth < 900
-                ) {
-                    return;
-                }
-
+            (event) => {
 
                 const rect =
                     card.getBoundingClientRect();
 
 
-                const x =
-                    event.clientX -
-                    rect.left;
-
-
-                const y =
-                    event.clientY -
-                    rect.top;
-
-
                 const centerX =
+                    rect.left +
                     rect.width / 2;
 
 
                 const centerY =
+                    rect.top +
                     rect.height / 2;
 
 
                 const rotateX =
-                    ((y - centerY) /
-                        centerY) *
-                    -2;
+                    (
+                        event.clientY -
+                        centerY
+                    ) /
+                    35;
 
 
                 const rotateY =
-                    ((x - centerX) /
-                        centerX) *
-                    2;
+                    (
+                        centerX -
+                        event.clientX
+                    ) /
+                    35;
 
 
                 card.style.transform =
                     `perspective(900px)
                      rotateX(${rotateX}deg)
                      rotateY(${rotateY}deg)
-                     translateY(-3px)`;
+                     translateY(-4px)`;
 
             }
         );
@@ -899,64 +1541,99 @@ tiltCards.forEach(
             }
         );
 
+    });
+
+}
+
+
+/* =========================================================
+   21. HERO MOUSE MOVEMENT
+========================================================= */
+
+function setupHeroMovement() {
+
+    const hero =
+        document.querySelector(
+            ".hero"
+        );
+
+
+    const heroVisual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+
+    if (
+        !hero ||
+        !heroVisual
+    ) {
+
+        return;
+
     }
-);
 
 
-/* ================= HERO MOUSE MOVEMENT ================= */
-
-const heroArt =
-    document.querySelector(
-        ".hero-art"
-    );
+    const reduceMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
 
 
-if (heroArt) {
+    if (reduceMotion) {
+        return;
+    }
 
-    heroArt.addEventListener(
+
+    if (window.innerWidth <= 800) {
+        return;
+    }
+
+
+    hero.addEventListener(
         "mousemove",
-        event => {
-
-            if (
-                window.innerWidth < 900
-            ) {
-                return;
-            }
-
+        (event) => {
 
             const rect =
-                heroArt.getBoundingClientRect();
+                hero.getBoundingClientRect();
 
 
             const x =
-                (event.clientX -
-                    rect.left) /
-                rect.width -
-                .5;
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width;
 
 
             const y =
-                (event.clientY -
-                    rect.top) /
-                rect.height -
-                .5;
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height;
 
 
-            heroArt.style.transform =
-                `translate(
-                    ${x * 10}px,
-                    ${y * 10}px
-                )`;
+            const moveX =
+                (x - 0.5) * 12;
+
+
+            const moveY =
+                (y - 0.5) * 12;
+
+
+            heroVisual.style.transform =
+                `translate(${moveX}px, ${moveY}px)`;
 
         }
     );
 
 
-    heroArt.addEventListener(
+    hero.addEventListener(
         "mouseleave",
         () => {
 
-            heroArt.style.transform =
+            heroVisual.style.transform =
                 "";
 
         }
@@ -965,57 +1642,1013 @@ if (heroArt) {
 }
 
 
-/* ================= FORM INPUT EFFECT ================= */
+/* =========================================================
+   22. CUSTOM CURSOR
+========================================================= */
 
-document.querySelectorAll(
-    "input, textarea, select"
-).forEach(
-    input => {
+function setupCursor() {
 
-        input.addEventListener(
+    const dot =
+        document.getElementById(
+            "cursorDot"
+        );
+
+
+    const ring =
+        document.getElementById(
+            "cursorRing"
+        );
+
+
+    if (
+        !dot ||
+        !ring
+    ) {
+
+        return;
+
+    }
+
+
+    const finePointer =
+        window.matchMedia(
+            "(pointer: fine)"
+        ).matches;
+
+
+    if (!finePointer) {
+        return;
+    }
+
+
+    let mouseX = 0;
+
+    let mouseY = 0;
+
+    let ringX = 0;
+
+    let ringY = 0;
+
+
+    window.addEventListener(
+        "mousemove",
+        (event) => {
+
+            mouseX =
+                event.clientX;
+
+
+            mouseY =
+                event.clientY;
+
+
+            dot.style.left =
+                `${mouseX}px`;
+
+
+            dot.style.top =
+                `${mouseY}px`;
+
+        }
+    );
+
+
+    const animateRing =
+        () => {
+
+            ringX +=
+                (mouseX - ringX) *
+                0.16;
+
+
+            ringY +=
+                (mouseY - ringY) *
+                0.16;
+
+
+            ring.style.left =
+                `${ringX}px`;
+
+
+            ring.style.top =
+                `${ringY}px`;
+
+
+            requestAnimationFrame(
+                animateRing
+            );
+
+        };
+
+
+    animateRing();
+
+
+    const interactiveElements =
+        document.querySelectorAll(
+            "a, button, .art-card, input, textarea, select"
+        );
+
+
+    interactiveElements.forEach(
+        (element) => {
+
+            element.addEventListener(
+                "mouseenter",
+                () => {
+
+                    ring.classList.add(
+                        "hover"
+                    );
+
+                }
+            );
+
+
+            element.addEventListener(
+                "mouseleave",
+                () => {
+
+                    ring.classList.remove(
+                        "hover"
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   23. FORM FOCUS EFFECTS
+========================================================= */
+
+function setupFormFocus() {
+
+    const fields =
+        document.querySelectorAll(
+            ".form-group input, .form-group textarea, .form-group select"
+        );
+
+
+    fields.forEach((field) => {
+
+        field.addEventListener(
             "focus",
             () => {
 
-                input.parentElement
-                    .classList.add(
+                const parent =
+                    field.closest(
+                        ".form-group"
+                    );
+
+
+                if (parent) {
+
+                    parent.classList.add(
                         "focused"
                     );
+
+                }
 
             }
         );
 
 
-        input.addEventListener(
+        field.addEventListener(
             "blur",
             () => {
 
-                input.parentElement
-                    .classList.remove(
+                const parent =
+                    field.closest(
+                        ".form-group"
+                    );
+
+
+                if (parent) {
+
+                    parent.classList.remove(
                         "focused"
                     );
 
+                }
+
             }
         );
+
+    });
+
+}
+
+
+/* =========================================================
+   24. KEYBOARD NAVIGATION
+========================================================= */
+
+function setupKeyboardNavigation() {
+
+    document.addEventListener(
+        "keydown",
+        (event) => {
+
+            const lightbox =
+                document.getElementById(
+                    "lightbox"
+                );
+
+
+            if (
+                event.key === "Escape" &&
+                lightbox &&
+                lightbox.classList.contains(
+                    "active"
+                )
+            ) {
+
+                lightbox.classList.remove(
+                    "active"
+                );
+
+
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "true"
+                );
+
+
+                document.body.classList.remove(
+                    "no-scroll"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   25. SERVICE ITEM INTERACTION
+========================================================= */
+
+function setupServiceInteractions() {
+
+    const services =
+        document.querySelectorAll(
+            ".service-item"
+        );
+
+
+    services.forEach(
+        (service) => {
+
+            service.addEventListener(
+                "mouseenter",
+                () => {
+
+                    service.style.zIndex =
+                        "2";
+
+                }
+            );
+
+
+            service.addEventListener(
+                "mouseleave",
+                () => {
+
+                    service.style.zIndex =
+                        "";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupServiceInteractions();
+
+
+/* =========================================================
+   26. IMAGE LAZY LOAD ENHANCEMENT
+========================================================= */
+
+function setupLazyImages() {
+
+    const images =
+        document.querySelectorAll(
+            'img[loading="lazy"]'
+        );
+
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+
+        return;
+
+    }
+
+
+    const observer =
+        new IntersectionObserver(
+            (entries, observerInstance) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            const image =
+                                entry.target;
+
+
+                            image.classList.add(
+                                "image-ready"
+                            );
+
+
+                            observerInstance.unobserve(
+                                image
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+            {
+                rootMargin:
+                    "100px"
+            }
+        );
+
+
+    images.forEach(
+        (image) => {
+
+            observer.observe(image);
+
+        }
+    );
+
+}
+
+
+setupLazyImages();
+
+
+/* =========================================================
+   27. GALLERY IMAGE ZOOM
+========================================================= */
+
+function setupGalleryZoom() {
+
+    const images =
+        document.querySelectorAll(
+            ".art-card .art-image"
+        );
+
+
+    images.forEach(
+        (image) => {
+
+            image.addEventListener(
+                "mouseenter",
+                () => {
+
+                    image.style.willChange =
+                        "transform";
+
+                }
+            );
+
+
+            image.addEventListener(
+                "mouseleave",
+                () => {
+
+                    image.style.willChange =
+                        "auto";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupGalleryZoom();
+
+
+/* =========================================================
+   28. RANDOM ART DETAILS
+========================================================= */
+
+function setupArtworkNumbers() {
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card"
+        );
+
+
+    cards.forEach(
+        (card, index) => {
+
+            const number =
+                card.querySelector(
+                    ".art-number"
+                );
+
+
+            if (!number) {
+                return;
+            }
+
+
+            const formatted =
+                String(index + 1)
+                    .padStart(3, "0");
+
+
+            number.textContent =
+                formatted;
+
+        }
+    );
+
+}
+
+
+setupArtworkNumbers();
+
+
+/* =========================================================
+   29. HERO IMAGE MOUSE ZOOM
+========================================================= */
+
+function setupHeroImageInteraction() {
+
+    const wrapper =
+        document.querySelector(
+            ".hero-image-wrapper"
+        );
+
+
+    const image =
+        document.querySelector(
+            ".hero-image"
+        );
+
+
+    if (
+        !wrapper ||
+        !image
+    ) {
+
+        return;
+
+    }
+
+
+    if (window.innerWidth <= 800) {
+        return;
+    }
+
+
+    wrapper.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const rect =
+                wrapper.getBoundingClientRect();
+
+
+            const x =
+                (
+                    event.clientX -
+                    rect.left
+                ) /
+                rect.width;
+
+
+            const y =
+                (
+                    event.clientY -
+                    rect.top
+                ) /
+                rect.height;
+
+
+            const moveX =
+                (x - 0.5) * 8;
+
+
+            const moveY =
+                (y - 0.5) * 8;
+
+
+            image.style.transform =
+                `scale(1.05)
+                 translate(${moveX}px, ${moveY}px)`;
+
+        }
+    );
+
+
+    wrapper.addEventListener(
+        "mouseleave",
+        () => {
+
+            image.style.transform =
+                "";
+
+        }
+    );
+
+}
+
+
+setupHeroImageInteraction();
+
+
+/* =========================================================
+   30. RANDOM PARTICLE REFRESH
+========================================================= */
+
+function refreshParticles() {
+
+    const container =
+        document.getElementById(
+            "particles"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    if (
+        container.children.length >
+        40
+    ) {
+
+        container.innerHTML = "";
+
+        setupParticles();
+
+    }
+
+}
+
+
+setInterval(
+    refreshParticles,
+    30000
+);
+
+
+/* =========================================================
+   31. WINDOW RESIZE HANDLER
+========================================================= */
+
+let resizeTimer;
+
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        clearTimeout(
+            resizeTimer
+        );
+
+
+        resizeTimer =
+            setTimeout(
+                () => {
+
+                    handleResize();
+
+                },
+                250
+            );
 
     }
 );
 
 
-/* ================= CONSOLE ================= */
+/* =========================================================
+   32. HANDLE RESIZE
+========================================================= */
 
-console.log(
-    "%cWILLIAMS ART",
-    "font-size:25px;color:#d7a84e;font-family:serif;"
+function handleResize() {
+
+    const heroVisual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+
+    if (
+        heroVisual &&
+        window.innerWidth <= 800
+    ) {
+
+        heroVisual.style.transform =
+            "";
+
+    }
+
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card, .process-card"
+        );
+
+
+    if (window.innerWidth <= 800) {
+
+        cards.forEach(
+            (card) => {
+
+                card.style.transform =
+                    "";
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   33. PREVENT BROKEN HASH LINKS
+========================================================= */
+
+function setupHashLinks() {
+
+    const links =
+        document.querySelectorAll(
+            'a[href="#"]'
+        );
+
+
+    links.forEach(
+        (link) => {
+
+            link.addEventListener(
+                "click",
+                (event) => {
+
+                    event.preventDefault();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupHashLinks();
+
+
+/* =========================================================
+   34. PAGE VISIBILITY
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    () => {
+
+        if (
+            document.hidden
+        ) {
+
+            document.title =
+                "Williams Art | Come Back Soon";
+
+        } else {
+
+            document.title =
+                "Williams Art | Contemporary Artist";
+
+        }
+
+    }
 );
 
 
+/* =========================================================
+   35. NAVIGATION HOVER SOUNDLESS FEEDBACK
+========================================================= */
+
+function setupNavigationFeedback() {
+
+    const links =
+        document.querySelectorAll(
+            ".nav-link"
+        );
+
+
+    links.forEach(
+        (link) => {
+
+            link.addEventListener(
+                "mouseenter",
+                () => {
+
+                    link.style.transform =
+                        "translateY(-1px)";
+
+                }
+            );
+
+
+            link.addEventListener(
+                "mouseleave",
+                () => {
+
+                    link.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupNavigationFeedback();
+
+
+/* =========================================================
+   36. SERVICE ARROW ANIMATION
+========================================================= */
+
+function setupServiceArrows() {
+
+    const items =
+        document.querySelectorAll(
+            ".service-item"
+        );
+
+
+    items.forEach(
+        (item) => {
+
+            const arrow =
+                item.querySelector(
+                    ".service-arrow"
+                );
+
+
+            if (!arrow) {
+                return;
+            }
+
+
+            item.addEventListener(
+                "mouseenter",
+                () => {
+
+                    arrow.style.transform =
+                        "rotate(45deg) scale(1.08)";
+
+                }
+            );
+
+
+            item.addEventListener(
+                "mouseleave",
+                () => {
+
+                    arrow.style.transform =
+                        "";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupServiceArrows();
+
+
+/* =========================================================
+   37. PROCESS CARD STAGGER
+========================================================= */
+
+function setupProcessStagger() {
+
+    const cards =
+        document.querySelectorAll(
+            ".process-card"
+        );
+
+
+    cards.forEach(
+        (card, index) => {
+
+            card.style.transitionDelay =
+                `${index * 0.08}s`;
+
+        }
+    );
+
+}
+
+
+setupProcessStagger();
+
+
+/* =========================================================
+   38. ARTWORK CARD ACCESSIBILITY
+========================================================= */
+
+function setupArtworkAccessibility() {
+
+    const cards =
+        document.querySelectorAll(
+            ".art-card"
+        );
+
+
+    cards.forEach(
+        (card) => {
+
+            card.setAttribute(
+                "tabindex",
+                "0"
+            );
+
+
+            card.setAttribute(
+                "role",
+                "button"
+            );
+
+
+            card.addEventListener(
+                "keydown",
+                (event) => {
+
+                    if (
+                        event.key === "Enter" ||
+                        event.key === " "
+                    ) {
+
+                        event.preventDefault();
+
+                        card.click();
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+setupArtworkAccessibility();
+
+
+/* =========================================================
+   39. CONTACT EMAIL CONFIGURATION
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    Replace:
+
+        your@email.com
+
+    with your real email address.
+
+    Example:
+
+        williamsart@gmail.com
+
+*/
+
+const WILLIAMS_ART_EMAIL =
+    "your@email.com";
+
+
+/* =========================================================
+   40. UPDATE CONTACT FORM EMAIL
+========================================================= */
+
+function updateContactEmail() {
+
+    const form =
+        document.getElementById(
+            "contactForm"
+        );
+
+
+    if (!form) {
+        return;
+    }
+
+
+    form.dataset.artistEmail =
+        WILLIAMS_ART_EMAIL;
+
+}
+
+
+updateContactEmail();
+
+
+/* =========================================================
+   41. SOCIAL LINK CONFIGURATION
+========================================================= */
+
+/*
+    You can replace the "#" links
+    in index.html with your actual
+    social media links.
+
+    Example:
+
+    Instagram:
+    https://instagram.com/yourusername
+
+    TikTok:
+    https://tiktok.com/@yourusername
+
+    YouTube:
+    https://youtube.com/@yourusername
+
+*/
+
+
+/* =========================================================
+   42. CONSOLE BRANDING
+========================================================= */
+
+function consoleBranding() {
+
+    console.log(
+        "%c WILLIAMS ART ",
+        `
+        background: #702c3a;
+        color: #f7f3ea;
+        font-size: 18px;
+        padding: 10px 18px;
+        border-radius: 5px;
+        `
+    );
+
+
+    console.log(
+        "%c Creating emotion through art.",
+        `
+        color: #b88732;
+        font-size: 13px;
+        font-style: italic;
+        `
+    );
+
+}
+
+
+/* =========================================================
+   43. FINAL INITIALIZATION MESSAGE
+========================================================= */
+
 console.log(
-    "%cCreating visual stories.",
-    "font-size:12px;color:#f3eadb;"
+    "Williams Art portfolio initialized."
 );
 
 
-/* ================= FINAL INIT ================= */
-
-updateHeader();
-updateScrollProgress();
+/* =========================================================
+   END OF WILLIAMS ART JAVASCRIPT
+========================================================= */
